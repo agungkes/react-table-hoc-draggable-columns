@@ -1,13 +1,13 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external'
-import postcss from 'rollup-plugin-postcss'
-import resolve from 'rollup-plugin-node-resolve'
-import url from 'rollup-plugin-url'
-import svgr from '@svgr/rollup'
-import scss from 'rollup-plugin-scss'
+import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import external from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+import resolve from 'rollup-plugin-node-resolve';
+import url from 'rollup-plugin-url';
+import svgr from '@svgr/rollup';
+import scss from '@astappiev/rollup-plugin-scss';
 
-import pkg from './package.json'
+import pkg from './package.json';
 
 export default {
   input: 'src/index.js',
@@ -27,16 +27,16 @@ export default {
     external(),
     scss(),
     postcss({
-      extract: "./dist/styles.css",
-      minimize: true  
+      extract: 'styles.css',
+      minimize: true
     }),
     url(),
     svgr(),
     babel({
       exclude: 'node_modules/**',
-      plugins: [ 'external-helpers' ]
+      plugins: ['external-helpers']
     }),
     resolve(),
     commonjs()
   ]
-}
+};
